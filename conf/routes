@@ -10,6 +10,7 @@ GET     /page2                      controllers.Application.displayObject()
 GET     /page3                      controllers.Application.cpage3()
 POST    /bars                      controllers.Application.addBar()
 GET     /bars                      controllers.Application.getBars()
+GET     /page4                      controllers.Application.cpage4()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

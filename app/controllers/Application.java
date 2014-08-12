@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,6 +18,7 @@ import views.html.*;
 
 public class Application extends Controller {
 	
+	static Random rand = new Random();
 
     @Autowired
     static BarService barService;
@@ -57,6 +59,11 @@ public class Application extends Controller {
     public static Result getBars() {
     	List<Bar> bars = new Model.Finder(String.class, Bar.class).all();
     	return ok(Json.toJson(bars));
+    }
+    
+    public static Result cpage4() {
+    	Integer x = rand.nextInt(10);
+    	return ok(vpage4.render(x));
     }
 
 }
