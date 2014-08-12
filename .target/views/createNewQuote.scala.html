@@ -1,0 +1,33 @@
+@(newQuote: Form[Quote])
+@import helper._
+
+@main(" Extended Tiger Running Space , Super Creator") {
+	
+	<script src='@routes.Assets.at("javascripts/index.min.js")'></script>
+
+	<div class="col-lg-12">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h3>Create a new quote</h3>
+			</div>
+			<div class="panel-body">
+				@if(newQuote.hasGlobalErrors) {
+					<ul>
+					@for(error <- newQuote.globalErrors) {
+						<li>@error.message</li>
+					}
+					</ul>
+				}
+				
+				@form(action = routes.Application.saveQuote()) {
+					@inputText(newQuote("name"))
+					<input type="submit">
+				}
+				
+			</div>
+		</div>
+	</div>
+	
+	<ul id=quotes></ul>
+
+}

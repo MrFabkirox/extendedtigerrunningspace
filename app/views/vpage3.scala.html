@@ -1,7 +1,5 @@
 @(message: String)
 
-
-
 @main(" Extended Tiger Running Space , Page 3 ") {
 
 <script src='@routes.Assets.at("javascripts/index.min.js")'></script>
@@ -11,16 +9,12 @@
 
 <p>
 Page to add some quotes
-
 </p>
 
-
 <br />
-@helper.form(action = routes.Application.addBar()){
-
+@helper.form(action = routes.Application.createNewQuoteAction()){
 	<input name="name">
 	<input type="submit">
-
 }
 
 <br />
@@ -30,15 +24,10 @@ Page to add some quotes
 <br />
 <br />
 
-
 <img src="/assets/images/tigerdesign.jpg"/>
 
 <br />
 <br />
-
-
-
 <br />
-
 
 }

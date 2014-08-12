@@ -6,15 +6,13 @@ import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import models.Bar;
+import models.Quote;
 import models.Entry;
-import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.libs.Json;
 import play.mvc.*;
 import services.BarService;
-import views.html.*;
 
 public class Application extends Controller {
 	
@@ -24,12 +22,12 @@ public class Application extends Controller {
     static BarService barService;
 
     public static Result index() {
-        return ok(index.render("Some String param can eventually appear.."));
+        return ok(views.html.index.render("Some String param can eventually appear.."));
     }
     
     public static Result cpage1(String name, int age) {
     	String s = "Extended Tiger Running Space. cpage1";
-        return ok(vpage1.render(name, age));
+        return ok(views.html.vpage1.render(name, age));
     }
     
     public static Result displayObject() {
@@ -40,30 +38,43 @@ public class Application extends Controller {
     	entry2.m2 = "entry from m2";
     	entries.add(entry1);
     	entries.add(entry2);
-    	return ok(
-    	    objectRenderer.render(entries)
-    	);
+    	return ok(views.html.objectRenderer.render(entries));
     }
     
-    public static Result cpage3() {
-        return ok(vpage3.render("plop"));
+    //public static Result cpage3() {
+    //    return ok(views.html.vpage3.render("fake"));
+    //}
+    
+    public static Result addQuote() {
+        return play.mvc.Controller.redirect(controllers.routes.Application.createNewQuoteAction());
     }
     
-    public static Result addBar() {
-        Form<Bar> form = Form.form(Bar.class).bindFromRequest();
-        Bar bar = form.get();
-        bar.save();
-        return play.mvc.Controller.redirect(controllers.routes.Application.cpage3());
+    public static Result createNewQuoteAction() {
+    	Form<Quote> form = Form.form(Quote.class);
+    	return ok(views.html.createNewQuote.render(form));
+    }
+    
+    public static Result saveQuote() {
+    	Form<Quote> form = Form.form(Quote.class).bindFromRequest();
+    	if (form.hasErrors()) {
+    		return badRequest(views.html.createNewQuote.render(form));
+    							//display the form with errorr
+    	} else {
+    		Quote quote = form.get();
+    		quote.save();
+    		flash("success", String.format("New quote %s has been created", quote.name));
+    		return play.mvc.Controller.redirect(controllers.routes.Application.createNewQuoteAction());
+    	}
     }
 
-    public static Result getBars() {
-    	List<Bar> bars = new Model.Finder(String.class, Bar.class).all();
-    	return ok(Json.toJson(bars));
+    public static Result getQuotes() {
+    	List<Quote> quotes = new Model.Finder(String.class, Quote.class).all();
+    	return ok(Json.toJson(quotes));
     }
     
     public static Result cpage4() {
     	Integer x = rand.nextInt(10);
-    	return ok(vpage4.render(x));
+    	return ok(views.html.vpage4.render(x));
     }
 
 }

@@ -1,4 +1,4 @@
 $ ->
- $.get "/bars", (data) ->
-  $.each data, (vpage3, bar) ->
-   $("#bars").append $("<li>").text bar.name
+ $.get "/quotes", (data) ->
+  $.each data, (createNewQuote, quote) ->
+   $("#quotes").append $("<li>").text quote.name
