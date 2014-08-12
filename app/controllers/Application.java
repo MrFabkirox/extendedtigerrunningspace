@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import models.Bar;
 import models.Entry;
+import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.libs.Json;
@@ -37,7 +38,7 @@ public class Application extends Controller {
     	entries.add(entry1);
     	entries.add(entry2);
     	return ok(
-    	    objectRenderer.render(views.html.entries)
+    	    objectRenderer.render(entries)
     	);
     }
     
