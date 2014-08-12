@@ -13,6 +13,7 @@ import play.db.ebean.Model;
 import play.libs.Json;
 import play.mvc.*;
 import services.BarService;
+import views.html.*;
 
 public class Application extends Controller {
 	
@@ -21,12 +22,12 @@ public class Application extends Controller {
     static BarService barService;
 
     public static Result index() {
-        return ok(views.html.index.render("Some String param can eventually appear.."));
+        return ok(index.render("Some String param can eventually appear.."));
     }
     
     public static Result cpage1(String name, int age) {
     	String s = "Extended Tiger Running Space. cpage1";
-        return ok(views.html.vpage1.render(name, age));
+        return ok(vpage1.render(name, age));
     }
     
     public static Result displayObject() {
@@ -43,7 +44,7 @@ public class Application extends Controller {
     }
     
     public static Result cpage3() {
-        return ok(views.html.vpage3.render("plop"));
+        return ok(vpage3.render("plop"));
     }
     
     public static Result addBar() {
