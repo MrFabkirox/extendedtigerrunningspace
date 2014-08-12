@@ -7,13 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import models.Bar;
 import models.Entry;
-import play.*;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.libs.Json;
 import play.mvc.*;
 import services.BarService;
-import views.html.*;
 
 public class Application extends Controller {
 	
@@ -22,12 +20,12 @@ public class Application extends Controller {
     static BarService barService;
 
     public static Result index() {
-        return ok(index.render("Some String param can eventually appear.."));
+        return ok(views.html.index.render("Some String param can eventually appear.."));
     }
     
     public static Result cpage1(String name, int age) {
     	String s = "Extended Tiger Running Space. cpage1";
-        return ok(vpage1.render(name, age));
+        return ok(views.html.vpage1.render(name, age));
     }
     
     public static Result displayObject() {
@@ -39,25 +37,22 @@ public class Application extends Controller {
     	entries.add(entry1);
     	entries.add(entry2);
     	return ok(
-    	    objectRenderer.render(entries)
+    	    objectRenderer.render(views.html.entries)
     	);
     }
     
     public static Result cpage3() {
-        return ok(vpage3.render("plop"));
+        return ok(views.html.vpage3.render("plop"));
     }
     
     public static Result addBar() {
         Form<Bar> form = Form.form(Bar.class).bindFromRequest();
-        //Bar bar = Form.form(Bar.class).bindFromRequest().get();
-        //barService.addBar(bar);
         Bar bar = form.get();
         bar.save();
         return play.mvc.Controller.redirect(controllers.routes.Application.cpage3());
     }
 
     public static Result getBars() {
-        //return play.mvc.Controller.ok(Json.toJson(barService.getAllBars()));
     	List<Bar> bars = new Model.Finder(String.class, Bar.class).all();
     	return ok(Json.toJson(bars));
     }
