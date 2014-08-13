@@ -7,13 +7,13 @@ GET     /                       controllers.Application.index()
 GET     /page1/:name/:age       controllers.Application.cpage1(name: String, age: Int)
 GET     /page2                  controllers.Application.displayObject()
 
-#GET     /page3                  controllers.Application.cpage3()
+#GET    /page3                  controllers.Application.cpage3()
 POST    /bars/add               controllers.Application.addQuote()
 
 GET     /quotes/new             controllers.Application.createNewQuoteAction()
-POST    /quotes                   controllers.Application.saveQuote()
+POST    /quotes                 controllers.Application.saveQuote()
 GET     /quotes                 controllers.Application.getQuotes()
 GET     /page4                  controllers.Application.cpage4()
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
+GET     /assets/*file           controllers.Assets.at(path="/public", file)
