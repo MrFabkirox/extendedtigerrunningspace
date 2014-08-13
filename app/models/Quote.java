@@ -12,8 +12,8 @@ public class Quote extends Model {
 	@Id
 	public String id;
 	
-	//@Constraints.Required
-	//@Constraints.MinLength(5)
+	@Constraints.Required
+	@Constraints.MinLength(5)
 	public String name;
 	
 	//@Constraints.Email
