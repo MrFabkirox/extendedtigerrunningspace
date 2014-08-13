@@ -16,7 +16,7 @@ create sequence quote_seq;
 
 # --- !Downs
 
-SET REFERENTIAL_INTEGRITY FALSE;
+SET REFERENTIAL_INTEGRITY TRUE;
 
 drop table if exists quote;
 
