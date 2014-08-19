@@ -1,0 +1,1 @@
+document.write(" Jascript from tigerjs ");

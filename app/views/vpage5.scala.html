@@ -16,8 +16,8 @@
 
 <p>
 	@helper.form(action=routes.Application.showMess(), 'Id -> "userMess") {
-		@helper.inputText(messForm("name"))
-		@helper.inputText(messForm("message"))
+		@helper.inputText(messForm("Name"))
+		@helper.inputText(messForm("Message"))
 		<input type=submit class=btn type=send>
 	}
 </p>
