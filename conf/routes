@@ -15,5 +15,8 @@ POST    /quotes                 controllers.Application.saveQuote()
 GET     /quotes                 controllers.Application.getQuotes()
 GET     /page4                  controllers.Application.cpage4()
 
+GET     /page5                  controllers.Application.cpage5()
+GET     /page5displ             controllers.Application.showMess()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file           controllers.Assets.at(path="/public", file)

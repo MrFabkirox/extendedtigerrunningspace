@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import models.Quote;
 import models.Entry;
+import models.UserMessage;
 import play.data.Form;
 import play.db.ebean.Model;
 import play.libs.Json;
@@ -76,5 +77,18 @@ public class Application extends Controller {
     	Integer x = rand.nextInt(10);
     	return ok(views.html.vpage4.render(x));
     }
+    
+    final static Form<UserMessage> userMess = Form.form(UserMessage.class); 
+    
+    public static Result cpage5() {
+    	return ok(views.html.vpage5.render(userMess));
+    }
+    
+    public static Result showMess() {
+    	Form <UserMessage> messFiled = userMess.bindFromRequest();
+    	UserMessage filed = messFiled.get();
+    	return ok(views.html.vpage5disp.render(filed));
+    }
+    
 
 }

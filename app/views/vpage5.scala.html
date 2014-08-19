@@ -1,0 +1,33 @@
+@(messForm: Form[UserMessage])
+@import helper._
+
+@main(" Extended Tiger Running Space , Page 4 ") {
+
+<script src='@routes.Assets.at("javascripts/index.min.js")'></script>
+
+<h2>Simple display from a form</h2>
+
+
+<p>
+	No database involved Here.
+</p>
+
+<br />
+
+<p>
+	@helper.form(action=routes.Application.showMess(), 'Id -> "userMess") {
+		@helper.inputText(messForm("name"))
+		@helper.inputText(messForm("message"))
+		<input type=submit class=btn type=send>
+	}
+</p>
+form
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+
+}
