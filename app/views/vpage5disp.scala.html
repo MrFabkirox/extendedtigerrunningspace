@@ -1,31 +1,31 @@
 @(mess: UserMessage)
 
-@main(" Extended Tiger Running Space , Page 4 ") {
+@main(" Extended Tiger Running Space, Page 5 ") {
 
-<script src='@routes.Assets.at("javascripts/index.min.js")'></script>
+	<script src='@routes.Assets.at("javascripts/index.min.js")'></script>
 
-<h2>Simple display from a form</h2>
+	<h2>Simple display from a form</h2>
 
 
-<p>
-	No database involved Here.
-</p>
+	<p>
+		No database involved Here.
+	</p>
+	<br />
 
-<br />
-
-<p>
-	@mess.name<br />
-	@mess.message<br />
-</p>
-<form action="@routes.Application.cpage5()" type="GET">
-	<button type="button" class="clickable" id="back"> Back to form </button>
-</form>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-
+	<p>
+		@mess.name<br />
+		@mess.message<br />
+	</p>
+	
+	<form action="@routes.Application.cpage5()" type="GET">
+		<button type="button" class="clickable" id="back"> Back to form </button>
+	</form>
+	
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
 
 }

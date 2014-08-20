@@ -18,5 +18,8 @@ GET     /page4                  controllers.Application.cpage4()
 GET     /page5                  controllers.Application.cpage5()
 GET     /page5displ             controllers.Application.showMess()
 
+GET     /page6                  controllers.Application.cpage6()
+GET     /page6auth              controllers.Application.cpage6auth()
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file           controllers.Assets.at(path="/public", file)

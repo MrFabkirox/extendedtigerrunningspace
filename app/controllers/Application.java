@@ -74,8 +74,8 @@ public class Application extends Controller {
     }
     
     public static Result cpage4() {
-    	Integer x = rand.nextInt(10);
-    	return ok(views.html.vpage4.render(x));
+    	Integer r = rand.nextInt(10);
+    	return ok(views.html.vpage4.render(r, "x"));
     }
     
     final static Form<UserMessage> userMess = Form.form(UserMessage.class); 
@@ -90,5 +90,35 @@ public class Application extends Controller {
     	return ok(views.html.vpage5disp.render(filed));
     }
     
-
+    public static class Login {
+		public String email;
+		public String password;
+	}
+    
+    public static Result cpage6() {
+    	return ok(views.html.vpage6.render(Form.form(Login.class)));
+    }
+    
+    public static Result cpage6auth() {
+    	Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+//    	if (loginForm.hasErrors()) {
+//    		System.out.println("bad login");
+//    		return badRequest(views.html.vpage6.render(loginForm));
+//    	} else {
+//    		session().clear();
+//    		session("email", loginForm.get().email);
+//    	return ok(views.html.vpage6auth.render());
+//    	}
+    	
+    	return ok(views.html.vpage6auth.render());
+    }
+    
+//    public String validate() {
+//    	if (Login.cpage6auth("email", "password") == null) {
+//    		System.out.println("Invalid user or password");
+//    		return "Invalid user or password";
+//    	}
+//    	return null;
+//    }
+    
 }

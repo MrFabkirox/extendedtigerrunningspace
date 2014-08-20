@@ -1,0 +1,33 @@
+@(form: Form[Application.Login])
+
+@main(" Extended Tiger Running Space, Page 6 ") {
+
+	<h2>Log in to access this page</h2>
+	<br />
+	<br />
+	
+	@helper.form(routes.Application.cpage6auth) {
+	<p>
+		<input type="email" name="email" placeholder="Email" value="@form("email").value">		
+	</p>
+	<p>
+		<input type="password" name="password" placeholder="password">
+	</p>
+	<p>
+		<button type="submit"> Login </button>
+	</p>
+	}
+	
+	@if(form.hasGlobalErrors) {
+    	<p class="error">
+        	@form.globalError.message
+        </p>
+    }
+
+	<br />
+	<br />
+	<br />
+	<br />
+	<br />
+
+}

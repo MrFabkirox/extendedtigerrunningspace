@@ -1,33 +1,28 @@
 @(message: String)
 
-@main(" Extended Tiger Running Space , Page 3 ") {
+@main(" Extended Tiger Running Space, Page 3 ") {
 
-<script src='@routes.Assets.at("javascripts/index.min.js")'></script>
+	<script src='@routes.Assets.at("javascripts/index.min.js")'></script>
 
-<h2>Quotes</h2>
+	<h2>Quotes</h2>
 
+	<p>
+		Page to add some quotes
+	</p>
+	<br />
+	
+	@helper.form(action = routes.Application.createNewQuoteAction()){
+		<input name="name">
+		<input type="submit">
+	}
+	<br />
 
-<p>
-Page to add some quotes
-</p>
+	<ul id="bars"></ul>
+	<br />
+	<br />
 
-<br />
-@helper.form(action = routes.Application.createNewQuoteAction()){
-	<input name="name">
-	<input type="submit">
-}
-
-<br />
-
-<ul id="bars"></ul>
-
-<br />
-<br />
-
-<img src="/assets/images/tigerdesign.jpg"/>
-
-<br />
-<br />
-<br />
-
+	<img src="/assets/images/tigerdesign.jpg"/>
+	<br />
+	<br />
+	<br />
 }
